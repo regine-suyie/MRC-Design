@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MRC Design & Engineering Consultants Sdn. Bhd. - Malacca-based civil and structural engineering consultancy. Website coming soon."
+    />
+    <title>MRC Design &amp; Engineering Consultants Sdn. Bhd. | Coming Soon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --ink: #111418;
+        --ink-soft: #6b7280;
+        --line: #e5e7eb;
+        --chip-bg: #f3f4f6;
+        --red: #f0403d;
+        --red-dark: #d92e2b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        background: #ffffff;
+        color: var(--ink);
+        line-height: 1.5;
+      }
+
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+
+      /* Hanging crane rig */
+      .rig {
+        position: relative;
+        width: 100%;
+        max-width: 220px;
+        height: 190px;
+        margin-bottom: 1.25rem;
+        touch-action: none;
+      }
+
+      .pivot {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        background: var(--ink);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .rope-line {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .crane-bob {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 96px;
+        height: 96px;
+        margin-left: -48px;
+        margin-top: -48px;
+        cursor: grab;
+      }
+
+      .crane-bob:active {
+        cursor: grabbing;
+      }
+
+      .crane-bob svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 10px 12px rgba(15, 23, 42, 0.15));
+      }
+
+      .drag-tag {
+        position: absolute;
+        top: 8px;
+        left: 62%;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+        animation: tagBounce 2.4s ease-in-out infinite;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      .drag-tag.hidden {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      @keyframes tagBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 5.2vw, 3.1rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        max-width: 720px;
+        margin-bottom: 0.85rem;
+      }
+
+      .eyebrow {
+        font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        margin-bottom: 0.3rem;
+      }
+
+      .eyebrow-sub {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        opacity: 0.7;
+        margin-bottom: 2.25rem;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .phone-chip {
+        background: var(--chip-bg);
+        color: var(--ink-soft);
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.4rem;
+        border-radius: 999px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--red);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .cta-btn svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .cta-btn:hover {
+        background: var(--red-dark);
+        transform: translateY(-1px);
+      }
+
+      .office-line {
+        font-size: 0.85rem;
+        color: var(--ink-soft);
+      }
+
+      .office-line a {
+        color: var(--ink-soft);
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .office-line a:hover {
+        color: var(--ink);
+        border-color: var(--ink-soft);
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.75rem;
+        color: var(--ink-soft);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="hero">
+        <div class="rig" id="rig">
+          <div class="pivot"></div>
+          <svg class="rope-line">
+            <line
+              id="rope"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="0"
+              stroke="#111418"
+              stroke-width="1.5"
+            />
+          </svg>
+
+          <div class="crane-bob" id="crane-bob">
+            <svg viewBox="0 0 100 110" fill="none">
+              <!-- Peaked apex -->
+              <path
+                d="M50 8 L15 34 M50 8 L85 34"
+                stroke="#111418"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <!-- Horizontal jib -->
+              <line
+                x1="15"
+                y1="34"
+                x2="85"
+                y2="34"
+                stroke="#111418"
+                stroke-width="9"
+                stroke-linecap="round"
+              />
+              <!-- Vertical mast -->
+              <line
+                x1="50"
+                y1="34"
+                x2="50"
+                y2="100"
+                stroke="#111418"
+                stroke-width="9"
+                stroke-linecap="round"
+              />
+              <!-- Counterweight window -->
+              <rect
+                x="25"
+                y="40"
+                width="15"
+                height="15"
+                stroke="#111418"
+                stroke-width="7"
+              />
+              <!-- Hook line -->
+              <line
+                x1="80"
+                y1="34"
+                x2="80"
+                y2="62"
+                stroke="#f0403d"
+                stroke-width="6"
+                stroke-linecap="round"
+              />
+              <!-- Hook bucket -->
+              <path
+                d="M70 62 h20 l-4 17 h-12 z"
+                stroke="#f0403d"
+                stroke-width="7"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span class="drag-tag" id="drag-tag">DRAG</span>
+        </div>
+
+        <h1>THIS CRANE IS<br />BUILDING SOMETHING</h1>
+        <p class="eyebrow">MRC Design &amp; Engineering Consultants Sdn. Bhd.</p>
+        <p class="eyebrow-sub">Check Back Soon</p>
+
+        <div class="contact-row">
+          <span class="phone-chip">016-6499156</span>
+          <a
+            class="cta-btn"
+            href="https://wa.me/60166499156?text=Hello%20MRC%20Design%2C%20I%20would%20like%20to%20inquire%20about%20engineering%20consultancy%20services."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.86 11.86 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"
+              />
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <p class="office-line">
+          Office (Melaka): <a href="tel:+6065530476">06-5530476</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 MRC Design &amp; Engineering Consultants Sdn. Bhd. All
+        rights reserved.
+      </p>
+    </footer>
+
+    <script>
+      const rig = document.getElementById("rig");
+      const bob = document.getElementById("crane-bob");
+      const rope = document.getElementById("rope");
+      const dragTag = document.getElementById("drag-tag");
+
+      let pivotX = 0,
+        pivotY = 0;
+      let restX = 0,
+        restY = 0;
+      let x = 0,
+        y = 0,
+        vx = 0,
+        vy = 0;
+      let dragging = false;
+      let dragOffsetX = 0,
+        dragOffsetY = 0;
+      let hasDragged = false;
+      let animId = null;
+
+      function layout() {
+        const rect = rig.getBoundingClientRect();
+        pivotX = rect.width / 2;
+        pivotY = 0;
+        restX = pivotX;
+        restY = 130;
+        if (!dragging && !animId) {
+          x = restX;
+          y = restY;
+          render();
+        }
+      }
+
+      function render() {
+        bob.style.transform = `translate(${x}px, ${y}px)`;
+        rope.setAttribute("x1", pivotX);
+        rope.setAttribute("y1", pivotY);
+        rope.setAttribute("x2", x);
+        rope.setAttribute("y2", y);
+      }
+
+      function pointerPos(e) {
+        const rect = rig.getBoundingClientRect();
+        return { px: e.clientX - rect.left, py: e.clientY - rect.top };
+      }
+
+      bob.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        hasDragged = true;
+        dragTag.classList.add("hidden");
+        cancelAnimationFrame(animId);
+        animId = null;
+        bob.setPointerCapture(e.pointerId);
+        const { px, py } = pointerPos(e);
+        dragOffsetX = x - px;
+        dragOffsetY = y - py;
+      });
+
+      bob.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const { px, py } = pointerPos(e);
+        const nx = px + dragOffsetX;
+        const ny = py + dragOffsetY;
+        const dx = nx - pivotX;
+        const dy = ny - pivotY;
+        const dist = Math.hypot(dx, dy);
+        const maxDist = 190;
+        if (dist > maxDist) {
+          x = pivotX + (dx / dist) * maxDist;
+          y = pivotY + (dy / dist) * maxDist;
+        } else {
+          x = nx;
+          y = ny;
+        }
+        render();
+      });
+
+      function release() {
+        if (!dragging) return;
+        dragging = false;
+        vx = 0;
+        vy = 0;
+        settle();
+      }
+
+      bob.addEventListener("pointerup", release);
+      bob.addEventListener("pointercancel", release);
+
+      function settle() {
+        const k = 0.09;
+        const damping = 0.82;
+
+        function step() {
+          const ax = -k * (x - restX);
+          const ay = -k * (y - restY);
+          vx = (vx + ax) * damping;
+          vy = (vy + ay) * damping;
+          x += vx;
+          y += vy;
+          render();
+
+          if (
+            Math.abs(vx) > 0.05 ||
+            Math.abs(vy) > 0.05 ||
+            Math.abs(x - restX) > 0.3 ||
+            Math.abs(y - restY) > 0.3
+          ) {
+            animId = requestAnimationFrame(step);
+          } else {
+            x = restX;
+            y = restY;
+            render();
+            animId = null;
+          }
+        }
+        animId = requestAnimationFrame(step);
+      }
+
+      window.addEventListener("resize", layout);
+      layout();
+    </script>
+  </body>
+</html>
